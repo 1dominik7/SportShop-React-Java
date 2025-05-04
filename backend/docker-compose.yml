@@ -5,8 +5,8 @@ services:
     env_file:
       - .env
     environment:
-      POSTGRES_USER: {POSTGRES_USER}
-      POSTGRES_PASSWORD: {POSTGRES_PASSWORD}
+      POSTGRES_USER: dominik
+      POSTGRES_PASSWORD: dominik
       POSTGRES_DB: ecommerce_shop
       PGDATA: /var/lib/postgresql/data
     volumes:
