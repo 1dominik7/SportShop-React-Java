@@ -1,0 +1,68 @@
+app:
+  frontend:
+    base-url: ${BASE_URL}
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_NAME}
+  api-key: ${CLOUDINARY_APIKEY}
+  api-secret: ${CLOUDINARY_SECRET}
+
+spring:
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+    validation-query: SELECT 1
+    test-on-borrow: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        database: ${POSTGRES_DB}
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: false
+        ssl:
+          trust: "*"
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY}
+      expiration: ${JWT_EXPIRATION}
+  mailing:
+    frontend:
+      activation-url: ${ACTIVATION_URL}
+      restart-password-url: ${RESTART_PASSWORD_URL}
+  stripe:
+    publishable-key: ${STRIPE_PUBLISHABLE_KEY}
+    secret-key: ${STRIPE_SECRET_KEY}
+    webhook-secret: ${STRIPE_WEBHOOK_SECRET}
+
+server:
+  port: ${SERVER_PORT}
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.security: DEBUG
+    com.stripe: DEBUG
